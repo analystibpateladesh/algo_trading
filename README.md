@@ -33,7 +33,7 @@ algo_trading/
 ## STEP 1 — Install Python & Node.js (FREE)
 
 ### Python (if not installed)
-Download from https://python.org/downloads — choose Python 3.11+
+Download from https://python.org/downloads — choose Python 3.11 only(not uper models)
 During install, CHECK "Add Python to PATH"
 
 ### Node.js (if not installed)
@@ -41,7 +41,7 @@ Download from https://nodejs.org — choose "LTS" version
 
 Verify both are installed:
 ```bash
-python --version     # Should show 3.11+
+python --version     # Should show 3.11.
 node --version       # Should show 18+
 ```
 
@@ -56,7 +56,7 @@ Open a terminal (Command Prompt on Windows, Terminal on Mac/Linux):
 cd algo_trading/backend
 
 # Create a virtual environment (keeps things clean)
-python -m venv venv
+py -3.11 -m venv venv
 
 # Activate it:
 # On Windows:
@@ -64,6 +64,14 @@ venv\Scripts\activate
 # On Mac/Linux:
 source venv/bin/activate
 
+#then...
+pip install --upgrade pip setuptools wheel
+pip install pandas==2.2.2
+# or
+#Force pip to use binaries only:
+pip install pandas==2.2.2 --only-binary :all:
+
+pip install fastapi uvicorn yfinance pandas numpy
 # Install all dependencies (all FREE)
 pip install -r requirements.txt
 ```
@@ -77,7 +85,7 @@ This installs: FastAPI, uvicorn, yfinance, pandas, numpy — all free & open sou
 Still in the backend folder with venv activated:
 
 ```bash
-uvicorn main:app --reload --port 8000
+python -m uvicorn main:app --reload --port 8000
 ```
 
 You should see:
